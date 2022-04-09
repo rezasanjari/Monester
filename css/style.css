@@ -1,0 +1,141 @@
+@keyframes body{
+    0%{
+        background-color: red;
+    }
+   100%{
+        background-color: black;
+    }
+}
+@keyframes human{
+ 0%{
+    transform: translate(0, 0);
+ }   
+ 15%{
+     transform: translate(-10px, 40px, 150px);
+ } 
+ 30%{
+     transform: translate(-10px, -20px);
+ }
+ 45%{
+     transform: translate(90px, 40px);
+ }
+ 60%{
+     transform: translate(90px, -30px) scale(0.9);
+ }
+ 75%{
+     transform: translate(-20px, 40px);
+ }
+ 90%{
+    transform: translate(30px, -10px);
+ }
+ 100%{
+     transform: translate(0, 0);
+ }
+}
+@keyframes monster{
+    0%{
+       transform: translate(0, 0);
+    }   
+    15%{
+        transform: translate(-10px, 40px, 150px);
+    } 
+    30%{
+        transform: translate(-10px, -20px);
+    }
+    45%{
+        transform: translate(60px, 30px) rotate(360deg);
+    }
+    60%{
+        transform: translate(60px, -50px) rotate(360deg) scale(1.1);
+    }
+    75%{
+        transform: translate(-20px, 40px);
+    }
+    90%{
+       transform: translate(30px, -10px);
+    }
+    100%{
+        transform: translate(0, 0);
+    }
+}
+@keyframes fire{
+    from{
+        transform: translateX(50px);
+        opacity: 1;
+    }
+    to{
+        transform: translate(-800px, 0px);
+        opacity: 0; 
+    }
+}
+@keyframes fire1{
+    from{
+        transform: translate(-50px, -50px);
+        opacity: 1;
+    }
+    to{
+        transform: translate(900px, 0px);
+        opacity: 0; 
+    }
+}
+.game{
+    animation: body 0.3s 7s 4;
+    height: 100vh;
+}
+.human{
+    animation: human 5s infinite;
+}
+.monster{
+    animation: monster 3s infinite;
+}
+.fire{
+    opacity: 0;
+    animation: fire 2s infinite forwards 1s;
+}
+.fire1{
+    opacity: 0;
+    animation: fire1 2s infinite forwards;
+}
+.opacity{
+    opacity: 0;
+}
+.healthbar {
+    width: 80%;
+    height: 35px;
+    border: 1px solid #575757;
+    margin: 1rem 0;
+    background: #fde5e5;
+  }
+  .healthbar__value {
+    height: 100%;
+  }
+  .winner-gif{
+      position: absolute;
+      z-index: 9999;
+      top: 0;
+      left: 30%;
+  }
+  @media screen and (max-width:767px)
+  {
+      .w-25{
+          width: 50% !important;
+      }
+      .healthbar {
+        width: 100%;
+    }
+      .btn-box{
+          max-width: 50%;
+          flex: unset;
+          margin-bottom: 15px;
+      }
+      .btn-box button{
+          font-size: 14px;
+          font-weight: normal;
+      }
+      .mt-5{
+          margin-top: 20px !important;
+      }
+      .winner-gif {
+        left: 1%;
+      }
+  }

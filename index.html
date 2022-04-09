@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monster Slayer</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="js/jquey.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/vue.js" defer></script>
+    <script src="js/app.js" defer></script>
+</head>
+<body>
+    <div id="game">
+        <div :class="{game: startAnimation}">
+            <header class="bg-info py-4">
+                <h1 class="text-center text-light">Monster Slayer</h1>
+            </header>
+            <section>
+                <div class="container">
+                    <img v-if="winner === 'player'" src="images/giphy.gif" class="img-fluid winner-gif">
+                    <div class="row mt-5 pt-3">
+                        <div class="col-6">
+                            <img src="images/human-2.png" :class="['w-25', {human: startAnimation}]">
+                            <img src="images/fire1.png" :class="['w-25', 'opacity', {fire1: startAnimation}]">
+                        </div>
+                        <div class="col-6 text-right">
+                            <img src="images/fire.png" :class="['w-25', 'opacity', {fire: startAnimation}]">
+                            <img src="images/monster-1.png" :class="['w-25', {monster: startAnimation}]">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="container">
+                    <div class="row mt-5">
+                        <div class="col-6">
+                            <div class="healthbar">
+                                <div class="healthbar__value bg-success" :style="playerBarStyles"></div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="healthbar ml-auto">
+                                <div class="healthbar__value bg-success" :style="monsterBarStyles"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-5" v-if="winner">
+                        <div v-if="winner === 'draw'" class="col-12 alert alert-warning font-weight-bold">It is Draw! Be Careful Please . . .</div>
+                        <div v-else-if="winner === 'player'" class="col-12 alert alert-success font-weight-bold">Wow! Congratulation . . . You Won!</div>
+                        <div v-else class="col-12 alert alert-info font-weight-bold">OH NO! You Lost!</div>
+                        <div class="col-4 mx-auto">
+                            <button @click="startGame" class="btn btn-primary btn-lg btn-block">Start New Game!</button>
+                        </div>
+                    </div>
+
+                    <div class="row mt-5" v-else>
+                        <div class="col-3 btn-box">
+                            <button :disabled="mayUseSpecialAttack" @click="specialAttackMonster" class="btn btn-danger btn-block btn-lg">SPECIAL ATTACK</button>
+                        </div>
+                        <div class="col-3 btn-box">
+                            <button @click="attackMonster" class="btn btn-outline-success btn-block btn-lg font-weight-bold">ATTACK</button>
+                        </div>
+                        <div class="col-3 btn-box">
+                            <button :disabled="mayUseHeal" @click="healPlayer" class="btn btn-outline-warning btn-block btn-lg font-weight-bold">HEAL</button>
+                        </div>
+                        <div class="col-3 btn-box">
+                            <button @click="surrender" class="btn btn-info btn-block btn-lg">SURRENDER</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+</html>
